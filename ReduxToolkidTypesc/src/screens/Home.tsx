@@ -1,17 +1,19 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+
 import { ActivityIndicator, Button, Text, View } from 'react-native';
 import { useCustomSelector, useCustomDispatch } from './../app/hooks/index';
 import { decrement, increment, incrementByAmount } from '../app/slices/sliceCounter';
 import { Results } from './Results';
 import { doLogin, loginOut } from '../app/slices/sliceLogin';
+import { StackScreenProps } from '@react-navigation/stack';
 
 
 
 
+interface Props extends StackScreenProps<any, any> { }
 
-const Home = () => {
-    const navigation = useNavigation();
+const Home = ({navigation}:Props) => {
+
     const { counter, token } = useCustomSelector((state) => state);
     const dispatch = useCustomDispatch();
 
@@ -53,6 +55,10 @@ const Home = () => {
             <Button
                 onPress={() => dispatch(loginOut())}
                 title='salir'
+            />
+            <Button
+                onPress={() =>navigation.navigate('Register')}
+                title='Register'
             />
 
         </View>
