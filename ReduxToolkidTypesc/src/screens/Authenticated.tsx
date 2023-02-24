@@ -4,6 +4,7 @@ import auth from '@react-native-firebase/auth';
 
 export default function Authenticated() {
     const user = auth().currentUser;
+    console.log(user)
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>You have logged in successfully</Text>
